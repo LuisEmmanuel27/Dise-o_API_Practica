@@ -1,0 +1,49 @@
+# Proceso de desarrollo de la API de entretenimiento
+## API: Catálogo y reseñas de caricaturas
+
+<div align="center">
+    <img src="https://c4.wallpaperflare.com/wallpaper/242/145/84/patrick-star-nickelodeon-spongebob-squarepants-caricature-cartoons-colorful-wallpaper-preview.jpg" alt="imagen" width="500"/>
+</div>
+
+## Herramientas
+
+- Draw.io
+- Anypoint
+- RAML
+
+## Descripción de la API
+
+Desarrollo de una API para un catálogo de caricaturas, con el cual se deben poder realizar las siguientes funciones:
+
+- `Listado general:` Se debe tener un endpoint para enlistar todas las caricaturas que posee el catálogo.
+
+- `Listado por género:` Se debe tener un endpoint para enlistar todas las caricaturas de un determinado género.
+
+- `Obtener caricatura por título:` Se debe tener un endpoint para obtener una caricatura en base al título dado.
+
+- `Listado por estudio de animación:` Se debe de tener un endpoint para enlistar todas las caricaturas de una determinada casa de animación.
+
+- `Listado por creador/a:` Se debe de tener un endpoint para enlistar todas las caricaturas de un creador/a dado.
+
+- `Crear una reseña:` Se debe de tener un endpoint para poder hacer una reseña y calificar una caricatura.
+
+- `Obtener recomendaciones:` El usuario debe poder obtener recomendaciones personalizadas en base a las reseñas realizadas y los géneros que mejor califique.
+
+En cuanto a los datos que la API debe retornar de cada caricatura deben ser los siguientes:
+
+1. Título
+2. Género
+3. Sinopsis
+4. Temporadas
+5. Capítulos
+6. Fecha de estreno
+7. Calificación media
+
+## Planeación de la API con Draw.io
+
+<a href="./DiseñoAPI.drawio">draw</a>
+
+## <a href="./anypoint/Documentacion.md">Desarrollo de la API con Anypoint y RAML</a>
+
+> [!NOTE]
+> Próximamente: Desarrollo de la API pero con Swagger y OpenAPI
