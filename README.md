@@ -41,7 +41,9 @@ En cuanto a los datos que la API debe retornar de cada caricatura deben ser los 
 
 ## Planeación de la API con Draw.io
 
-<a href="./DiseñoAPI.drawio">draw</a>
+Para tener una idea más clara y completa del desarrollo de la API, decidí crear una serie de diagramas en _**Draw.io**_, con los cuales también determiné con más claridad la información que deben contener las entidades que involucra el desarrollo de la API.
+
+Simplemente para ver el diagrama, descargue el archivo de nombre `DiseñoAPI.drawio` y ábralo en la página web [Draw.io](https://app.diagrams.net/).
 
 ## <a href="./anypoint/Documentacion.md">Desarrollo de la API con Anypoint y RAML</a>
 
