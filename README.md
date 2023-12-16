@@ -37,7 +37,18 @@ En cuanto a los datos que la API debe retornar de cada caricatura deben ser los 
 4. Temporadas
 5. Capítulos
 6. Fecha de estreno
-7. Calificación media
+7. Estudio de animación
+8. Creador/a
+9. Calificación media
+
+En caso de obtener solo una única caricatura, como es uno de los endpoints requeridos, también de manera adicional, debemos retornar las reseñas que esta posea con los siguientes datos:
+
+1. Título
+2. Usuario
+3. Fecha
+4. Reseña
+5. Calificación
+6. Spoiler
 
 ## Planeación de la API con Draw.io
 
