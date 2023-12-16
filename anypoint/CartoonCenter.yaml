@@ -29,6 +29,8 @@ description: Una API para obtener información sobre diversas caricaturas asi co
                   "caricatura": !include ./Caricatura.raml,
                   "ejemplos": [
                     {
+                      "id": 1,
+                      "portada": "ruta/imagen.png",
                       "titulo": "Hilda",
                       "genero": "aventuras",
                       "sinopsis": "Sigue las aventuras de Hilda, una niña de cabello azul que se muda de su bosque encantado a la ciudad de Trolberg, donde hace nuevos amigos y conoce a criaturas mágicas",
@@ -40,6 +42,8 @@ description: Una API para obtener información sobre diversas caricaturas asi co
                       "calificacion_med": 4.8
                     },
                     {
+                      "id": 2,
+                      "portada": "ruta/imagen.png",
                       "titulo": "The Owl House",
                       "genero": "fantasía",
                       "sinopsis": "Sigue las aventuras de Luz, una adolescente que descubre un portal a un mundo mágico donde se hace amiga de una bruja rebelde y un adorable demonio",
@@ -51,6 +55,8 @@ description: Una API para obtener información sobre diversas caricaturas asi co
                       "calificacion_med": 4.7
                     },
                     {
+                      "id": 3,
+                      "portada": "ruta/imagen.png",
                       "titulo": "Rick and Morty",
                       "genero": "ciencia ficcion",
                       "sinopsis": "Sigue las aventuras de Rick, un científico loco que viaja por el tiempo y el espacio con su nieto Morty, enfrentando todo tipo de peligros y parodias",
@@ -62,6 +68,8 @@ description: Una API para obtener información sobre diversas caricaturas asi co
                       "calificacion_med": 4.9
                     },
                     {
+                      "id": 4,
+                      "portada": "ruta/imagen.png",
                       "titulo": "BoJack Horseman",
                       "genero": "comedia",
                       "sinopsis": "Sigue la vida de BoJack, un actor frustrado que fue famoso en una sitcom de los 90 y en el presente es alcohólico y vive sin rumbo en un mundo habitado por animales antropomórficos",
@@ -73,6 +81,8 @@ description: Una API para obtener información sobre diversas caricaturas asi co
                       "calificacion_med": 4.8
                     },
                     {
+                      "id": 5,
+                      "portada": "ruta/imagen.png",
                       "titulo": "Bluey",
                       "genero": "infantil",
                       "sinopsis": "Sigue las aventuras de Bluey, una cachorra de perro que vive con su familia y sus amigos, y aprende sobre el mundo a través del juego",
@@ -82,6 +92,19 @@ description: Una API para obtener información sobre diversas caricaturas asi co
                       "casa_animadora": "Ludo Studio",
                       "creador": "Joe Brumm",
                       "calificacion_med": 4.6
+                    },
+                    {
+                      "id": 6,
+                      "portada": "ruta/imagen.png",
+                      "titulo": "Hora de Aventura",
+                      "genero": "aventuras",
+                      "sinopsis": "Sigue las aventuras de Finn, un niño valiente y curioso, y Jake, un perro con poderes mágicos, que viven en la Tierra de Ooo, un mundo lleno de personajes extraños y divertidos",
+                      "temporadas": 10,
+                      "capitulos": 283,
+                      "fecha_estreno": "2010-04-05",
+                      "casa_animadora": "Cartoon Network Studios",
+                      "creador": "Pendleton Ward",
+                      "calificacion_med": 4.7
                     }
                   ],
                   "pagina_actual": 1,
@@ -153,6 +176,8 @@ description: Una API para obtener información sobre diversas caricaturas asi co
                     "caricatura": !include ./Caricatura.raml,
                     "ejemplos": [
                       {
+                        "id": 1,
+                        "portada": "ruta/imagen.png",
                         "titulo": "Hilda",
                         "genero": "aventuras",
                         "sinopsis": "Sigue las aventuras de Hilda, una niña de cabello azul que se muda de su bosque encantado a la ciudad de Trolberg, donde hace nuevos amigos y conoce a criaturas mágicas",
@@ -164,6 +189,8 @@ description: Una API para obtener información sobre diversas caricaturas asi co
                         "calificacion_med": 4.8
                       },
                       {
+                        "id": 6,
+                        "portada": "ruta/imagen.png",
                         "titulo": "Hora de Aventura",
                         "genero": "aventuras",
                         "sinopsis": "Sigue las aventuras de Finn, un niño valiente y curioso, y Jake, un perro con poderes mágicos, que viven en la Tierra de Ooo, un mundo lleno de personajes extraños y divertidos",
@@ -225,3 +252,13 @@ description: Una API para obtener información sobre diversas caricaturas asi co
                   "status": 500
                 }
               type: object
+  /{titulo}:
+    get:
+      description: Obtener una caricatura por medio de su titulo y sus respectivas reseñas
+      queryParameters:
+        titulo_query:
+          description: Titulo de la caricatura a buscar
+          required: true
+          type: string
+          maxLength: 60
+          example: "final space"

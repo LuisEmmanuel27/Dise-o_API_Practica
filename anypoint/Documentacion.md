@@ -135,3 +135,6 @@ Mis dudas son:
 3. ¿Me pueden explicar más sobre los types?
 
 Fuera de eso continué con el resto del diseño de la API sin mayores problemas
+
+> [!NOTE]
+> Los códigos colocados aquí pueden diferir del resultado final en el RAML de anypoint.
