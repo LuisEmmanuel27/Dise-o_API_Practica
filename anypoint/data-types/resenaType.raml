@@ -1,0 +1,15 @@
+#%RAML 1.0 DataType
+displayName: Reseña
+description: Define el tipo de datos de Reseña
+
+type: object
+properties:
+  id: number
+  id_caricatura: number # Caricatura.id
+  id_usuario: number # Usuario.id
+  titulo: string # Caricatura.titulo
+  usuario: string # Usuario.nombre
+  fecha: datetime
+  resena: string
+  calificacion: number
+  spoiler: boolean

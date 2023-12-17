@@ -1,0 +1,406 @@
+#%RAML 1.0
+title: Catálogo de caricaturas
+version: v1
+description: Una API para obtener información sobre diversas caricaturas asi como poder realizar reseñas a las mismas.
+
+types:
+  Caricatura: !include data-types/caricaturaType.raml
+  Resena: !include data-types/resenaType.raml
+  Usuario: !include data-types/usuarioType.raml
+
+/caricaturas:
+  get:
+    displayName: GET All Cartoons
+    description: Retorna una lista con todas las caricaturas presentes en el catálogo
+    responses:
+      200:
+        body:
+          application/json:
+            type: Caricatura[]
+            example: !include examples/caricaturasExample.raml
+      400:
+        description: Bad Request
+        body:
+          application/json:
+            example:
+              {
+                "error": {
+                  "message": "La solicitud no es válida. Verifica los parámetros proporcionados.",
+                },
+                "success": false,
+                "status": 400
+              }
+            type: object
+      500:
+        description: Internal Server Error
+        body:
+          application/json:
+            example:
+              {
+                "error": {
+                  "message": "Hubo un problema interno en el servidor. Intenta de nuevo más tarde.",
+                },
+                "success": false,
+                "status": 500
+              }
+            type: object
+  /genero/{genero}:
+    get:
+      displayName: GET All Cartoons By Gen
+      description: Obtener un listado de las caricatuas que coincidan con el genero buscado por el usuario
+      responses:
+        200:
+          body:
+            application/json:
+              type: Caricatura[]
+              example: !include examples/cartoonGenBusExample.raml
+        400:
+          description: Bad Request
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "La solicitud no es válida. Verifica los parámetros proporcionados.",
+                  },
+                  "success": false,
+                  "status": 400
+                }
+              type: object
+        404:
+          description: Not Found
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "No se encontraron coincidencias",
+                  },
+                  "success": false,
+                  "status": 404
+                }
+              type: object
+        500:
+          description: Internal Server Error
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "Hubo un problema interno en el servidor. Intenta de nuevo más tarde.",
+                  },
+                  "success": false,
+                  "status": 500
+                }
+              type: object
+  /titulo/{titulo}:
+    get:
+      displayName: GET Cartoon By Title
+      description: Obtener la caricatura por medio de su nombre/titulo, así como las reseñas de la misma
+      responses:
+        200:
+          body:
+            application/json:
+              type: Caricatura[]
+              example: !include examples/cartoonResenasExample.raml
+        400:
+          description: Bad Request
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "La solicitud no es válida. Verifica los parámetros proporcionados.",
+                  },
+                  "success": false,
+                  "status": 400
+                }
+              type: object
+        404:
+          description: Not Found
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "No se encontraron coincidencias, revisa que este bien escrito el titulo",
+                  },
+                  "success": false,
+                  "status": 404
+                }
+              type: object
+        500:
+          description: Internal Server Error
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "Hubo un problema interno en el servidor. Intenta de nuevo más tarde.",
+                  },
+                  "success": false,
+                  "status": 500
+                }
+              type: object
+  /creador/{creador}:
+    get:
+      displayName: GET All Cartoons By Author
+      description: Obtener un listado de las caricaturas que coincidan con el autor/a dado por el usuario
+      responses:
+        200:
+          body:
+            application/json:
+              type: Caricatura[]
+              example: !include examples/cartoonAutBusExample.raml
+        400:
+          description: Bad Request
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "La solicitud no es válida. Verifica los parámetros proporcionados.",
+                  },
+                  "success": false,
+                  "status": 400
+                }
+              type: object
+        404:
+          description: Not Found
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "No se encontraron coincidencias",
+                  },
+                  "success": false,
+                  "status": 404
+                }
+              type: object
+        500:
+          description: Internal Server Error
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "Hubo un problema interno en el servidor. Intenta de nuevo más tarde.",
+                  },
+                  "success": false,
+                  "status": 500
+                }
+              type: object
+  /casa_ani/{casa_animadora}:
+    get:
+      displayName: GET Cartoons By Animation Studio
+      description: Obtener un listado de las caricaturas que hayan sido creadas por el estudio de animación dado por el usuario
+      responses:
+        200:
+          body:
+            application/json:
+              type: Caricatura[]
+              example: !include examples/cartoonCasaBusExample.raml
+        400:
+          description: Bad Request
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "La solicitud no es válida. Verifica los parámetros proporcionados.",
+                  },
+                  "success": false,
+                  "status": 400
+                }
+              type: object
+        404:
+          description: Not Found
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "No se encontraron coincidencias",
+                  },
+                  "success": false,
+                  "status": 404
+                }
+              type: object
+        500:
+          description: Internal Server Error
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "Hubo un problema interno en el servidor. Intenta de nuevo más tarde.",
+                  },
+                  "success": false,
+                  "status": 500
+                }
+              type: object
+  /agregarResena:
+    post:
+      displayName: ADD a Review
+      description: Crea una nueva reseña para alguna caricatura en específico
+      headers:
+        Requester-ID:
+          displayName: Requestor ID
+          description: ID de la persona que está haciendo el request de los datos
+          type: string
+          required: true
+        Authorization:
+          displayName: Authorization
+          description: Token de autenticación del usuario
+          type: string
+          required: true
+        Content-Type:
+          displayName: Content-Type
+          description: Formato del cuerpo de la solicitud
+          type: string
+          required: true
+        Accept-Language:
+          displayName: Accept-Language
+          description: Idioma preferido del cliente para las respuestas
+          type: string
+        Timestamp:
+          displayName: Timestamp
+          description: Timestamp de la solicitud
+          type: string
+        Request-ID:
+          displayName: Request-ID
+          description: Identificador único de la solicitud
+          type: string
+      responses:
+        201:
+          body:
+            application/json:
+              type: Resena[]
+              example: !include examples/nuevaResenaExample.raml
+        400:
+          description: Bad Request
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "La solicitud no es válida. Verifica los parámetros proporcionados.",
+                  },
+                  "success": false,
+                  "status": 400
+                }
+              type: object
+        403:
+          description: Forbidden
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "Lo sentimos no tienes los permisos para esta acción",
+                  },
+                  "success": false,
+                  "status": 403
+                }
+              type: object
+        404:
+          description: Not Found
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "No se encontraron coincidencias",
+                  },
+                  "success": false,
+                  "status": 404
+                }
+              type: object
+        500:
+          description: Internal Server Error
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "Hubo un problema interno en el servidor. Intenta de nuevo más tarde.",
+                  },
+                  "success": false,
+                  "status": 500
+                }
+              type: object
+
+/recomendacionesUsuario:
+  get:
+    displayName: GET User Recommendations
+    description: Listar peliculas que se le recomienden al usuario en base a los generos de las caricaturas que mejor califique el usuario
+    headers:
+      Requester-ID:
+          displayName: Requestor ID
+          description: ID de la persona que está haciendo el request de los datos
+          type: string
+          required: true
+      Authorization:
+          displayName: Authorization
+          description: Token de autenticación del usuario
+          type: string
+          required: true
+    responses:
+      200:
+        body:
+          application/json:
+            type: Caricatura[]
+            example: !include examples/caricaturasExample.raml
+      400:
+          description: Bad Request
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "La solicitud no es válida. Verifica los parámetros proporcionados",
+                  },
+                  "success": false,
+                  "status": 400
+                }
+              type: object
+      403:
+        description: Forbidden
+        body:
+          application/json:
+            example:
+              {
+                "error": {
+                  "message": "Lo sentimos no tienes los permisos para esta acción",
+                },
+                "success": false,
+                "status": 403
+              }
+            type: object
+      404:
+        description: Not Found
+        body:
+          application/json:
+            example:
+              {
+                "error": {
+                  "message": "La solicitud no es válida",
+                },
+                "success": false,
+                "status": 404
+              }
+            type: object
+      500:
+        description: Internal Server Error
+        body:
+          application/json:
+            example:
+              {
+                "error": {
+                  "message": "Hubo un problema interno en el servidor. Intenta de nuevo más tarde",
+                },
+                "success": false,
+                "status": 500
+              }
+            type: object

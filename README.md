@@ -58,7 +58,8 @@ Para tener una idea más clara y completa del desarrollo de la API, decidí crea
 
 Simplemente para ver el diagrama, descargue el archivo de nombre `DiseñoAPI.drawio` y ábralo en la página web [Draw.io](https://app.diagrams.net/).
 
-## <a href="./anypoint/Documentacion.md">Desarrollo de la API con Anypoint y RAML</a>
+## <a href="./anypoint/Documentacion.md">🏭 Desarrollo de la API con Anypoint y RAML</a>
+## <a href="./anypoint/Dudas.md">❔ Dudas</a>
 
 > [!NOTE]
 > Próximamente: Desarrollo de la API pero con Swagger y OpenAPI
