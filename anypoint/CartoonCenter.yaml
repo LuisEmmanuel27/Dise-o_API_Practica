@@ -17,15 +17,15 @@ description: Una API para obtener información sobre diversas caricaturas asi co
         displayName: Tamaño de página
         type: integer
         description: Número de elementos por página
-        example: 6
-        default: 10
+        example: 3
+        default: 6
     responses:
       200:
         body:
           application/json:
             example:
               {
-                "data_caricaturas": {
+                "data": {
                   "caricatura": !include ./Caricatura.raml,
                   "ejemplos": [
                     {
@@ -149,6 +149,7 @@ description: Una API para obtener información sobre diversas caricaturas asi co
       description: Obtener un listado de los cartoons que coincidan con el genero buscado
       queryParameters:
         genero_query:
+          displayName: genero_query
           description: Genero de las caricaturas a buscar
           required: true
           type: string
@@ -164,15 +165,15 @@ description: Una API para obtener información sobre diversas caricaturas asi co
           displayName: Tamaño de página
           type: integer
           description: Número de elementos por página
-          example: 2
-          default: 10
+          example: 3
+          default: 6
       responses:
         200:
           body:
             application/json:
               example:
                 {
-                  "data_caricaturas": {
+                  "data": {
                     "caricatura": !include ./Caricatura.raml,
                     "ejemplos": [
                       {
@@ -205,7 +206,7 @@ description: Una API para obtener información sobre diversas caricaturas asi co
                     "pagina_actual": 1,
                     "total_paginas": 1,
                     "links": {
-                      "siguiente": "/caricaturas/aventuras/page=2&size=10",
+                      "siguiente": "/caricaturas?genero=aventuras&page=2&size=10",
                       "anterior": null
                     }
                   },
@@ -254,11 +255,98 @@ description: Una API para obtener información sobre diversas caricaturas asi co
               type: object
   /{titulo}:
     get:
-      description: Obtener una caricatura por medio de su titulo y sus respectivas reseñas
+      description: Obtener la caricatura por medio de su nombre, así como las reseñas de la misma
       queryParameters:
         titulo_query:
-          description: Titulo de la caricatura a buscar
+          description: Titulo o nombre de la caricatura
           required: true
           type: string
-          maxLength: 60
-          example: "final space"
+          maxLength: 100
+          example: final space
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                {
+                  "data": {
+                    "caricatura": !include ./Caricatura.raml,
+                    "ejemplo_cartoon": {
+                      "id": 7,
+                      "portada": "ruta/imagen.png",
+                      "titulo": "Final Space",
+                      "genero": "aventuras",
+                      "sinopsis": "Sigue las aventuras de Gary, un prisionero espacial que se hace amigo de Mooncake, un alienígena capaz de destruir planetas, y que intenta resolver el misterio del Final Space, una dimensión donde habitan los temibles Titanes",
+                      "temporadas": 3,
+                      "capitulos": 36,
+                      "fecha_estreno": "2018-02-26",
+                      "casa_animadora": "ShadowMachine",
+                      "creador": "Olan Rogers",
+                      "calificacion_med": 4.3
+                    },
+                    "reseñas": [
+                      {
+                        "id": 1,
+                        "id_caricatura": 7,
+                        "id_usuario": 123,
+                        "titulo": "Final Space",
+                        "usuario": "usuario1",
+                        "fecha": "2023-12-15T12:00:00Z",
+                        "reseña": "¡Increible!",
+                        "calificacion": 5,
+                        "spoiler": false,
+                      },
+                      {
+                        "id": 2,
+                        "id_caricatura": 7,
+                        "id_usuario": "usuario2",
+                        "fecha": "2023-12-15T12:00:00Z",
+                        "reseña": "Me encantó, especialmente el final",
+                        "calificacion": 4.5,
+                        "spoiler": true,
+                      },
+                    ],
+                  },
+                  "success": true,
+                  "status": 200
+                }
+              type: object
+        400:
+          description: Bad Request
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "La solicitud no es válida. Verifica los parámetros proporcionados.",
+                  },
+                  "success": false,
+                  "status": 400
+                }
+              type: object
+        404:
+          description: Not Found
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "No se encontraron coincidencias, revisa que este bien escrito el titulo",
+                  },
+                  "success": false,
+                  "status": 404
+                }
+              type: object
+        500:
+          description: Internal Server Error
+          body:
+            application/json:
+              example:
+                {
+                  "error": {
+                    "message": "Hubo un problema interno en el servidor. Intenta de nuevo más tarde.",
+                  },
+                  "success": false,
+                  "status": 500
+                }
+              type: object

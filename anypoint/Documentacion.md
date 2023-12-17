@@ -1,5 +1,8 @@
 # Diseñando la API en Anypoint
 
+> [!IMPORTANT]
+> Los códigos colocados aquí pueden diferir del resultado final en el RAML de anypoint.
+
 Para comenzar con el diseño de la API, fui a la página de `Anypoint Platform` > `Design Center` > `Create` > `New API Specification`.
 
 1. Comencé con el diseño de la API con cierta soltura, gracias al diseño previo realizado con _Draw.io_, empezando por la información básica del RAML.
@@ -135,6 +138,3 @@ Mis dudas son:
 3. ¿Me pueden explicar más sobre los types?
 
 Fuera de eso continué con el resto del diseño de la API sin mayores problemas
-
-> [!NOTE]
-> Los códigos colocados aquí pueden diferir del resultado final en el RAML de anypoint.
