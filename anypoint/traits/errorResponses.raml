@@ -1,0 +1,54 @@
+#%RAML 1.0 Trait
+responses:
+  400:
+    description: Bad Request
+    body:
+      application/json:
+        example:
+          {
+            "error": {
+              "message": "La solicitud no es válida. Verifica los parámetros proporcionados.",
+            },
+            "success": false,
+            "status": 400
+          }
+        type: object
+  403:
+    description: Forbidden
+    body:
+      application/json:
+        example:
+          {
+            "error": {
+              "message": "Lo sentimos no tienes los permisos para esta acción",
+            },
+            "success": false,
+            "status": 403
+          }
+        type: object
+  404:
+    description: Not Found
+    body:
+      application/json:
+        example:
+          {
+            "error": {
+              "message": "No se encontraron coincidencias",
+            },
+            "success": false,
+            "status": 404
+          }
+        type: object
+  500:
+    description: Internal Server Error
+    body:
+      application/json:
+        example:
+          {
+            "error": {
+            "message": "Hubo un problema interno en el servidor. Intenta de nuevo más tarde.",
+            },
+            "success": false,
+            "status": 500
+          }
+        type: object
